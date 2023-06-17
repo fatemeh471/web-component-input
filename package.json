@@ -1,0 +1,33 @@
+{
+  "name": "@nds/core",
+  "version": "0.2.0",
+  "description": "",
+  "main": "index.css",
+  "type": "module",
+  "scripts": {
+    "compile:nds": "sass --watch index.scss index.css",
+    "copy-contents": "cp -R classes components functions mixins tokens ./dist",
+    "publish:nds": "mkdir dist && npm run copy-contents && cd ./dist && cp ../package.json . && cp ../index.scss . && cd .. && npm run publish-to-registry",
+    "publish-to-registry": "npm publish ./dist --registry https://nexus3.nginhub.com/repository/nik-hosted-shared-npm/",
+    "serve": "es-dev-server --app-index index.html --node-resolve --watch --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@ssh-codebase.nginhub.com:22022/infrastacture/shared/nds/web/core.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "es-dev-server": "^2.1.0",
+    "es-module-shims": "^1.7.3",
+    "lit-element": "^3.3.2",
+    "sass": "^1.61.0"
+  },
+  "publishConfig": {
+    "@nds:registry": "https://nexus3.nginhub.com/repository/nik-hosted-shared-npm/"
+  },
+  "dependencies": {
+    "lit": "^2.7.5"
+  }
+}
